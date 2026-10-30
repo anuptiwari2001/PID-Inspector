@@ -35,6 +35,7 @@ Thumbs.db
 .grok/
 .tanstack/
 .vercel/
+ledger/
 attachments/
 screenshots/
 *.log
