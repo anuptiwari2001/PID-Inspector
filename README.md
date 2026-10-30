@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# Ledger
-
-Ledger is a one-drawing P&ID quality report. You open a structured drawing file, or a PDF text layer, and it lists the tags, the connections it could read, and the checks that failed.
+This is a one-drawing P&ID quality report. You open a structured drawing file, or a PDF text layer, and it lists the tags, the connections it could read, and the checks that failed.
 
 The page is a React app. The inspector itself is Python, in the `ledger/` folder. The page does not reimplement the checks. It sends the file to Python and shows the report Python returns.
 
