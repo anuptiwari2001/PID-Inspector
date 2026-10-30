@@ -36,6 +36,8 @@ Thumbs.db
 .tanstack/
 .vercel/
 ledger/
+server/
+migrations/
 attachments/
 screenshots/
 *.log
