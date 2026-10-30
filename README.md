@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ledger
 
 Ledger is a one-drawing P&ID quality report. You open a structured drawing file, or a PDF text layer, and it lists the tags, the connections it could read, and the checks that failed.
@@ -228,3 +229,7 @@ src/                    React report UI
 scripts/ask_local_model.py
 docs/VSCODE.md          VS Code and local-model guide
 ```
+=======
+# PID-Inspector
+A local P&amp;ID quality inspector. It reads Proteus XML, a Plant 3D JSON or CSV extract, or a PDF text layer, then lists tags, connections, and findings. No paid API key. Anyone can customize it by tag and use it.
+>>>>>>> a10f60d5cb3578a9955f8c9a5597aa69452d4165
