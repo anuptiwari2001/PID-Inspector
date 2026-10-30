@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlantModel>
+  <PlantInformation SchemaVersion="4.0.1" OriginatingSystem="Ledger sample, not a plant record" Date="2026-04-02" Discipline="PID"/>
+  <Drawing Name="PID-050" Title="Cooling water" Type="PID"/>
+  <Equipment ID="P-301" TagName="P-301" ComponentClass="CentrifugalPump">
+    <GenericAttributes Set="DexpiAttributes" Number="2">
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CW" Format="string"/>
+      <GenericAttribute Name="ServiceAssignmentClass" Value="Cooling water supply" Format="string"/>
+    </GenericAttributes>
+    <Nozzle ID="P-301-N1" ComponentClass="Nozzle">
+      <Connection ToID="SEG-50"/>
+    </Nozzle>
+    <Nozzle ID="P-301-N2" ComponentClass="Nozzle">
+      <Connection ToID="SEG-50"/>
+    </Nozzle>
+  </Equipment>
+  <Equipment ID="E-302" TagName="E-302" ComponentClass="HeatExchanger">
+    <GenericAttributes Set="DexpiAttributes" Number="2">
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CW" Format="string"/>
+      <GenericAttribute Name="ServiceAssignmentClass" Value="Cooling water return" Format="string"/>
+    </GenericAttributes>
+    <Nozzle ID="E-302-N1" ComponentClass="Nozzle">
+      <Connection ToID="SEG-50"/>
+    </Nozzle>
+    <Nozzle ID="E-302-N2" ComponentClass="Nozzle">
+      <Connection ToID="SEG-50"/>
+    </Nozzle>
+  </Equipment>
+  <PipingNetworkSystem ID="PNS-50" TagName="50-CW-100" ComponentClass="PipingNetworkSystem">
+    <GenericAttributes Set="DexpiAttributes" Number="3">
+      <GenericAttribute Name="LineNumberAssignmentClass" Value="50-CW-100" Format="string"/>
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CW" Format="string"/>
+      <GenericAttribute Name="NominalDiameterNumericalValueRepresentationAssignmentClass" Value="100" Format="string"/>
+    </GenericAttributes>
+    <PipingNetworkSegment ID="SEG-50" ComponentClass="PipingNetworkSegment">
+      <PipingComponent ID="BV-301" TagName="BV-301" ComponentClass="BallValve">
+        <GenericAttributes Set="DexpiAttributes" Number="1">
+          <GenericAttribute Name="ServiceAssignmentClass" Value="Isolation" Format="string"/>
+        </GenericAttributes>
+      </PipingComponent>
+      <Connection FromID="P-301-N1" FromNode="1" ToID="BV-301" ToNode="1"/>
+      <Connection FromID="BV-301" FromNode="2" ToID="E-302-N1" ToNode="1"/>
+      <CenterLine NumPoints="2">
+        <Coordinate X="0" Y="0"/>
+        <Coordinate X="120" Y="0"/>
+      </CenterLine>
+    </PipingNetworkSegment>
+  </PipingNetworkSystem>
+  <ProcessInstrumentationFunction ID="PI-301" TagName="PI-301" ComponentClass="PressureGauge">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="ProcessInstrumentationFunctionCategoryAssignmentClass" Value="Pressure" Format="string"/>
+    </GenericAttributes>
+    <Connection ToID="SEG-50"/>
+  </ProcessInstrumentationFunction>
+</PlantModel>

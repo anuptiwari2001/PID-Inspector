@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DexpiModel xmlns="https://data.dexpi.org/models/2.0" specification="2.0.1">
+  <ConceptualModel id="cm-1">
+    <Equipment id="pump-1" tagName="P-901"/>
+    <PipingNetworkSystem id="line-1" tagName="50-N-100"/>
+  </ConceptualModel>
+</DexpiModel>

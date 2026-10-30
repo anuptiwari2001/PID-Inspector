@@ -1,0 +1,7 @@
+Handle,Class,Tag,Service,Size,LineNumber,Function,ConnectedHandles
+H-P401,CentrifugalPump,P-401,Boiler feed,80x50,,,H-L80
+H-V401,Vessel,V-401,Feed drum,2000,,,H-L80
+H-L80,PipingLine,80-BF-150,Boiler feed,,80-BF-150,,H-P401;H-V401;H-FV401
+H-FV401,ControlValve,FV-401,Feed,150,,,H-L80
+H-LV401,Valve,LV-401,,,,,H-NOWHERE
+H-LIC401,LevelController,LIC-401,,,,Level,H-L80

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlantModel>
+  <PlantInformation SchemaVersion="4.1.0" OriginatingSystem="Ledger sample, not a plant record" Date="2026-04-02" Time="09:00:00" Is3D="no" Units="mm" Discipline="PID"/>
+  <Drawing Name="PID-100" Title="Crude unit feed" Revision="C" Type="PID"/>
+  <Equipment ID="P-101" TagName="P-101" ComponentClass="Pump" ComponentName="Crude feed pump">
+    <GenericAttributes Set="DexpiAttributes" Number="2">
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CR" Format="string"/>
+      <GenericAttribute Name="ServiceAssignmentClass" Value="Crude feed" Format="string"/>
+    </GenericAttributes>
+    <Nozzle ID="P-101-N1" ComponentClass="Nozzle"/>
+    <Nozzle ID="P-101-N2" ComponentClass="Nozzle">
+      <Connection ToID="SEG-100" ToNode="1"/>
+    </Nozzle>
+  </Equipment>
+  <Equipment ID="V-201" TagName="V-201" ComponentClass="Vessel" ComponentName="Feed separator">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="ServiceAssignmentClass" Value="" Format="string"/>
+    </GenericAttributes>
+    <Nozzle ID="V-201-N1" ComponentClass="Nozzle">
+      <Connection ToID="SEG-100"/>
+    </Nozzle>
+    <Nozzle ID="V-201-N2" ComponentClass="Nozzle">
+      <Connection ToID="SEG-120"/>
+    </Nozzle>
+  </Equipment>
+  <Equipment ID="equip-E-301" ComponentClass="HeatExchanger" ComponentName="Feed heater">
+    <Nozzle ID="E-301-N1" ComponentClass="Nozzle">
+      <Connection ToID="SEG-100"/>
+    </Nozzle>
+  </Equipment>
+  <Equipment ID="T-401" TagName="T-401" ComponentClass="Tank" ComponentName="Slop tank">
+    <GenericAttributes Set="Vendor" Number="1">
+      <GenericAttribute Name="VendorBlob" Format="base64"/>
+    </GenericAttributes>
+  </Equipment>
+  <PipingNetworkSystem ID="PNS-100" TagName="100-CR-150" ComponentClass="PipingNetworkSystem">
+    <GenericAttributes Set="DexpiAttributes" Number="3">
+      <GenericAttribute Name="LineNumberAssignmentClass" Value="100-CR-150" Format="string"/>
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CR" Format="string"/>
+      <GenericAttribute Name="NominalDiameterNumericalValueRepresentationAssignmentClass" Value="150" Format="string"/>
+    </GenericAttributes>
+    <PipingNetworkSegment ID="SEG-100" ComponentClass="PipingNetworkSegment">
+      <PipingComponent ID="XV-101" TagName="XV-101" ComponentClass="BallValve" ComponentName="Discharge isolation">
+        <GenericAttributes Set="DexpiAttributes" Number="1">
+          <GenericAttribute Name="ServiceAssignmentClass" Value="Isolation" Format="string"/>
+        </GenericAttributes>
+      </PipingComponent>
+      <Connection FromID="P-101-N2" FromNode="1" ToID="XV-101" ToNode="1"/>
+      <Connection FromID="XV-101" FromNode="2" ToID="V-201-N1" ToNode="1"/>
+      <CenterLine NumPoints="2">
+        <Presentation Layer="0" Color="0" LineType="0" LineWeight="0.5"/>
+        <Coordinate X="0" Y="0"/>
+        <Coordinate X="180" Y="0"/>
+      </CenterLine>
+    </PipingNetworkSegment>
+  </PipingNetworkSystem>
+  <PipingNetworkSystem ID="PNS-120" ComponentClass="PipingNetworkSystem">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="FluidCodeAssignmentClass" Value="CR" Format="string"/>
+    </GenericAttributes>
+    <PipingNetworkSegment ID="SEG-120" ComponentClass="PipingNetworkSegment">
+      <PipingComponent ID="HV-220" TagName="HV-220" ComponentClass="Valve"/>
+      <PipingComponent ID="cv-501" ComponentClass="CheckValve"/>
+      <Connection FromID="V-201-N2" FromNode="1" ToID="HV-220" ToNode="1"/>
+      <Connection FromID="HV-220" FromNode="2" ToID="NOZZLE-MISSING" ToNode="1"/>
+    </PipingNetworkSegment>
+  </PipingNetworkSystem>
+  <PipingNetworkSystem ID="PNS-130" TagName="130-CR-50" ComponentClass="PipingNetworkSystem">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="LineNumberAssignmentClass" Value="130-CR-50" Format="string"/>
+    </GenericAttributes>
+    <PipingNetworkSegment ID="SEG-130" ComponentClass="PipingNetworkSegment">
+      <Connection ToID="P-101-N1"/>
+    </PipingNetworkSegment>
+  </PipingNetworkSystem>
+  <InstrumentationLoopFunction ID="IL-101" ComponentClass="InstrumentationLoopFunction">
+    <ProcessInstrumentationFunction ID="PT-101" TagName="PT-101" ComponentClass="PressureTransmitter">
+      <GenericAttributes Set="DexpiAttributes" Number="1">
+        <GenericAttribute Name="ProcessInstrumentationFunctionCategoryAssignmentClass" Value="Pressure" Format="string"/>
+      </GenericAttributes>
+      <Connection ToID="SEG-100"/>
+    </ProcessInstrumentationFunction>
+  </InstrumentationLoopFunction>
+  <ProcessInstrumentationFunction ID="FT-140" TagName="FT-140" ComponentClass="ProcessInstrumentationFunction">
+    <Connection ToID="GHOST-LINE"/>
+  </ProcessInstrumentationFunction>
+  <ProcessInstrumentationFunction ID="LT-201-A" TagName="LT-201" ComponentClass="LevelTransmitter">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="ProcessInstrumentationFunctionCategoryAssignmentClass" Value="Level" Format="string"/>
+    </GenericAttributes>
+    <Connection ToID="V-201"/>
+  </ProcessInstrumentationFunction>
+  <ProcessInstrumentationFunction ID="LT-201-B" TagName="LT-201" ComponentClass="LevelTransmitter">
+    <GenericAttributes Set="DexpiAttributes" Number="1">
+      <GenericAttribute Name="ProcessInstrumentationFunctionCategoryAssignmentClass" Value="Level" Format="string"/>
+    </GenericAttributes>
+  </ProcessInstrumentationFunction>
+  <SignalLine ID="SIG-1" ComponentClass="SignalLine"/>
+  <VendorExtension Tool="sample"/>
+</PlantModel>

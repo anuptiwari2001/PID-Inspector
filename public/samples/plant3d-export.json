@@ -1,0 +1,58 @@
+{
+  "exportKind": "autocad-plant3d",
+  "sourceSystem": "AutoCAD Plant 3D",
+  "project": "DEMO-CW",
+  "drawing": "PID-200",
+  "note": "Plant 3D does not export P&ID XML. This file stands in for an SDK query or a Data Manager extract.",
+  "objects": [
+    {
+      "id": "H-P301",
+      "className": "CentrifugalPump",
+      "tag": "P-301",
+      "properties": { "Service": "Cooling water", "Size": "150x100" },
+      "connections": ["H-L50"]
+    },
+    {
+      "id": "H-E302",
+      "className": "HeatExchanger",
+      "tag": "E-302",
+      "properties": { "Service": "" },
+      "connections": ["H-L50"]
+    },
+    {
+      "id": "H-L50",
+      "className": "PipeLineGroup",
+      "tag": "50-CW-100",
+      "properties": { "NominalDiameter": "100", "Service": "Cooling water" },
+      "connections": ["H-P301", "H-E302", "H-BV301"]
+    },
+    {
+      "id": "H-BV301",
+      "className": "BallValve",
+      "tag": "BV-301",
+      "properties": { "Service": "Isolation", "Size": "100" },
+      "connections": ["H-L50"]
+    },
+    {
+      "id": "H-HV309",
+      "className": "Valve",
+      "tag": "HV-309",
+      "properties": { "Service": "Bypass" },
+      "connections": ["H-MISSING"]
+    },
+    {
+      "id": "H-PI301",
+      "className": "PressureGauge",
+      "tag": "PI-301",
+      "properties": { "Function": "Pressure" },
+      "connections": ["H-L50"]
+    },
+    {
+      "id": "H-FT",
+      "className": "Instrument",
+      "tag": "",
+      "properties": {},
+      "connections": []
+    }
+  ]
+}
