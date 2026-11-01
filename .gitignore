@@ -37,6 +37,7 @@ Thumbs.db
 .vercel/
 ledger/
 server/
+public/
 migrations/
 attachments/
 screenshots/
